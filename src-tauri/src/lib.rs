@@ -3,18 +3,28 @@ mod scanner;
 mod terminator;
 mod types;
 
+use std::sync::atomic::{AtomicBool, Ordering};
 use tauri::{
     tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent},
     Manager,
 };
 
+static FIRST_SHOW: AtomicBool = AtomicBool::new(true);
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
-            // No dock icon on macOS — behave like a menu bar accessory
-            #[cfg(target_os = "macos")]
-            app.set_activation_policy(tauri::ActivationPolicy::Accessory);
+            // Intercept native close button — hide instead of quit
+            if let Some(win) = app.get_webview_window("main") {
+                let win_clone = win.clone();
+                win.on_window_event(move |event| {
+                    if let tauri::WindowEvent::CloseRequested { api, .. } = event {
+                        api.prevent_close();
+                        let _ = win_clone.hide();
+                    }
+                });
+            }
 
             // Build system tray icon
             let _tray = TrayIconBuilder::new()
@@ -50,7 +60,9 @@ fn toggle_window(app: &tauri::AppHandle) {
                 let _ = win.hide();
             }
             _ => {
-                position_near_tray(&win);
+                if FIRST_SHOW.swap(false, Ordering::Relaxed) {
+                    position_near_tray(&win);
+                }
                 let _ = win.show();
                 let _ = win.set_focus();
             }
