@@ -59,7 +59,11 @@ jobs:
         run: npm run tauri build -- --bundles dmg
 
       - name: Ad-hoc codesign
-        run: codesign --force --deep --sign - "src-tauri/target/release/bundle/macos/PortKill.app"
+        run: |
+          APP_PATH="src-tauri/target/release/bundle/macos/PortKill.app"
+          echo "Bundle contents:"
+          ls -la src-tauri/target/release/bundle/macos/ || true
+          codesign --force --sign - --deep "$APP_PATH"
 
       - name: Recreate DMG with signed app
         run: |
