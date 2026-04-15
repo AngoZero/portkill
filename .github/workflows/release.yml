@@ -1,75 +1,64 @@
 name: release
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   push:
     tags:
       - 'v*'
 
 jobs:
-  build-and-release:
-    runs-on: macos-15
+  publish:
     permissions:
       contents: write
 
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: --bundles dmg
+          - platform: windows-latest
+            args: --bundles msi
+
+    runs-on: ${{ matrix.platform }}
+
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
-
-      - name: Generate Xcode project
-        run: xcodegen generate
-
-      - name: Build and archive
-        run: |
-          xcodebuild archive \
-            -project PortKill.xcodeproj \
-            -scheme PortKill \
-            -configuration Release \
-            -archivePath "$RUNNER_TEMP/PortKill.xcarchive" \
-            CODE_SIGN_IDENTITY="-" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
-
-      - name: Extract app from archive
-        run: |
-          mkdir -p "$RUNNER_TEMP/export"
-          APP_PATH=$(find "$RUNNER_TEMP/PortKill.xcarchive" -name "PortKill.app" -type d | head -1)
-          cp -R "$APP_PATH" "$RUNNER_TEMP/export/PortKill.app"
-
-      - name: Create DMG
-        run: |
-          hdiutil create \
-            -volname "PortKill" \
-            -srcfolder "$RUNNER_TEMP/export" \
-            -ov \
-            -format UDZO \
-            "$RUNNER_TEMP/PortKill.dmg"
-
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          name: PortKill ${{ github.ref_name }}
-          body: |
-            ## PortKill ${{ github.ref_name }}
+          node-version: lts/*
+          cache: npm
 
-            macOS menu bar utility to monitor TCP listening ports and kill rogue processes.
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
 
-            ### Download
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: ./src-tauri -> target
 
-            - **PortKill.dmg** — macOS 14.0 (Sonoma) or later
+      - name: Install dependencies
+        run: npm ci
 
-            ### Installation
-
-            1. Mount the DMG and drag PortKill.app to your Applications folder
-            2. Right-click → Open on first launch to bypass Gatekeeper (unsigned build)
-            3. PortKill appears in your menu bar — no Dock icon
-
-            ### Requirements
-
-            - macOS 14.0+
-            - Apple Silicon or Intel (universal binary not yet provided — this build targets the runner architecture)
-          files: ${{ runner.temp }}/PortKill.dmg
+      - name: Build and publish release
+        uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: PortKill ${{ github.ref_name }}
+          releaseBody: |
+            PortKill ${{ github.ref_name }} — Monitor TCP ports and kill processes from your system tray.
+
+            **Artifacts:**
+            - macOS `.dmg` (arm64)
+            - Windows `.msi` (x64)
+
+            **macOS:** Right-click → Open on first launch to bypass Gatekeeper (unsigned build).
+            **Windows:** Click "More info → Run anyway" to bypass SmartScreen (unsigned build).
+          args: ${{ matrix.args }}

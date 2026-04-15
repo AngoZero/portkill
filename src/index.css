@@ -1,0 +1,404 @@
+@import '@fontsource/space-grotesk/400.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/space-mono/400.css';
+@import '@fontsource/space-mono/700.css';
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+
+/* ── Tokens ──────────────────────────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --fg: #000000;
+  --border: #000000;
+  --kill: #cc0000;
+  --kill-hover: #990000;
+  --system-bg: #e8e8e8;
+  --system-fg: #555555;
+  --new-bar: #00cc44;
+  --error-bg: #cc0000;
+  --error-fg: #ffffff;
+  --tab-active-bg: #000000;
+  --tab-active-fg: #ffffff;
+  --font-ui: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --border-w: 2px;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ── App shell ───────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: var(--border-w) solid var(--border);
+  position: relative;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 38px;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+.header__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.header__actions {
+  display: flex;
+  gap: 4px;
+}
+
+.header__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: var(--border-w) solid var(--border);
+  color: var(--fg);
+  transition: background 0.1s;
+}
+
+.header__btn:hover { background: var(--fg); color: var(--bg); }
+.header__btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.header__btn--spinning svg { animation: spin 0.7s linear infinite; }
+
+/* ── Divider ─────────────────────────────────────────────── */
+.divider {
+  height: var(--border-w);
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Tab bar ─────────────────────────────────────────────── */
+.tabbar {
+  display: flex;
+  flex-shrink: 0;
+  border-bottom: var(--border-w) solid var(--border);
+}
+
+.tabbar__tab {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-right: var(--border-w) solid var(--border);
+  transition: background 0.1s;
+}
+
+.tabbar__tab:last-child { border-right: none; }
+.tabbar__tab:hover:not(.tabbar__tab--active) { background: #f0f0f0; }
+
+.tabbar__tab--active {
+  background: var(--tab-active-bg);
+  color: var(--tab-active-fg);
+}
+
+.tabbar__count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  opacity: 0.7;
+}
+
+/* ── Content area ────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content::-webkit-scrollbar { width: 6px; }
+.content::-webkit-scrollbar-track { background: var(--bg); }
+.content::-webkit-scrollbar-thumb { background: var(--border); }
+
+/* ── Port list ───────────────────────────────────────────── */
+.port-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Port row ────────────────────────────────────────────── */
+.port-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e0e0e0;
+  position: relative;
+  transition: background 0.1s;
+}
+
+.port-row:hover { background: #f8f8f8; }
+
+.port-row--new { background: #f0fff4; }
+
+.port-row__new-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--new-bar);
+}
+
+.port-row__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.port-row__name {
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.port-row__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #555;
+}
+
+.port-row__port { font-weight: 700; }
+
+.port-row__badge {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 1px 4px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.port-row__host {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.port-row__pid {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #888;
+}
+
+.port-row__action {
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn-kill {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--kill);
+  color: #fff;
+  border: var(--border-w) solid var(--kill);
+  padding: 4px 10px;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.btn-kill:hover { background: var(--kill-hover); border-color: var(--kill-hover); }
+
+.btn-outline {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: transparent;
+  color: var(--fg);
+  border: var(--border-w) solid var(--border);
+  padding: 4px 10px;
+  transition: background 0.1s;
+}
+
+.btn-outline:hover { background: var(--fg); color: var(--bg); }
+
+/* ── System badge ────────────────────────────────────────── */
+.badge-system {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: var(--system-bg);
+  color: var(--system-fg);
+  padding: 3px 6px;
+  border: 1px solid #ccc;
+}
+
+/* ── Scanning state ──────────────────────────────────────── */
+.scanning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #888;
+}
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+.scanning__dot {
+  width: 6px;
+  height: 6px;
+  background: var(--fg);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+/* ── Empty state ─────────────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 100%;
+  padding: 24px;
+}
+
+.empty__msg {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #888;
+}
+
+/* ── Error banner ────────────────────────────────────────── */
+.error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--error-bg);
+  color: var(--error-fg);
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+
+.error-banner__msg {
+  font-size: 11px;
+  flex: 1;
+  font-family: var(--font-mono);
+}
+
+.error-banner__close {
+  color: var(--error-fg);
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 4px;
+  opacity: 0.8;
+  transition: opacity 0.1s;
+}
+
+.error-banner__close:hover { opacity: 1; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: #888;
+  flex-shrink: 0;
+}
+
+/* ── Kill modal ──────────────────────────────────────────── */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--bg);
+  border: var(--border-w) solid var(--border);
+  padding: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal__label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #888;
+}
+
+.modal__name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.modal__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.modal__table td {
+  padding: 3px 0;
+}
+
+.modal__table td:first-child {
+  color: #888;
+  width: 50px;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+}
+
+.modal__warning {
+  font-size: 11px;
+  color: #555;
+  border-left: 3px solid var(--kill);
+  padding-left: 8px;
+}
+
+.modal__actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
