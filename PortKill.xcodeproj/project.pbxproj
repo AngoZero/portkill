@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		45DF4ED59AF9A743E55B742D /* ProcessTerminator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECCAA6FC28488DC54B9C1EC /* ProcessTerminator.swift */; };
+		4718179E48B199FE0ACDD1D6 /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42ED08A31A37D0E3DF3ED58 /* ErrorBanner.swift */; };
+		64FDD5FFF865F69672284809 /* PortListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA403F2C183C8DC2D82F899 /* PortListViewModel.swift */; };
+		75FB0CAD7C7D4F0CDEFEE21A /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED429BE7299155E6A112FDC7 /* FooterView.swift */; };
+		7CF8F8E4A37FA74F53E3A2FC /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EC123EB7C07F06B2A65F6A /* EmptyStateView.swift */; };
+		82B2E7C51C5F700600D7CAD1 /* PortEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B794DFEEB6DEE5D279CB890C /* PortEntry.swift */; };
+		836F301AA812E82001CC6F10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E74831A13D9C3BBA8277B9E /* Assets.xcassets */; };
+		864204296419C465E0842E74 /* KillConfirmationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493104A105FB3B61E3E00063 /* KillConfirmationModal.swift */; };
+		9F83102E55EB45901B4A8DA9 /* PortListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECEC91147E7550ABEF5DFA2 /* PortListView.swift */; };
+		9FB4287CED29E1D8CC14ED80 /* PortRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95AB1B2E3D4113E92C7ECCC /* PortRowView.swift */; };
+		A0C7C7B4BAD6B71E91ECC2A2 /* PortScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7440079AB976DAC5026DC7DF /* PortScanner.swift */; };
+		CBE44F54DEC1738A91E19BB0 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4153A5F982E0BC98FF451FAA /* HeaderView.swift */; };
+		E0BC8E009B6900BC475F30C0 /* BrutalistTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055B75227650B1242EDEF067 /* BrutalistTokens.swift */; };
+		F5F1D4E735CD972DD6906BD2 /* PortKillApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127133B37ADFD290B9C2DE1 /* PortKillApp.swift */; };
+		FC20FFF1BC680A6DD6CAC8E0 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C627E6E3F5CB3F6C22E89B /* TabBarView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		055B75227650B1242EDEF067 /* BrutalistTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrutalistTokens.swift; sourceTree = "<group>"; };
+		1127133B37ADFD290B9C2DE1 /* PortKillApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortKillApp.swift; sourceTree = "<group>"; };
+		2ECEC91147E7550ABEF5DFA2 /* PortListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortListView.swift; sourceTree = "<group>"; };
+		3E74831A13D9C3BBA8277B9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4153A5F982E0BC98FF451FAA /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		493104A105FB3B61E3E00063 /* KillConfirmationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KillConfirmationModal.swift; sourceTree = "<group>"; };
+		51C627E6E3F5CB3F6C22E89B /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		7440079AB976DAC5026DC7DF /* PortScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortScanner.swift; sourceTree = "<group>"; };
+		9C4D1009B78DA12A6533D12A /* PortKill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortKill.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A42ED08A31A37D0E3DF3ED58 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
+		AECCAA6FC28488DC54B9C1EC /* ProcessTerminator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTerminator.swift; sourceTree = "<group>"; };
+		B794DFEEB6DEE5D279CB890C /* PortEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortEntry.swift; sourceTree = "<group>"; };
+		BDA403F2C183C8DC2D82F899 /* PortListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortListViewModel.swift; sourceTree = "<group>"; };
+		E1EC123EB7C07F06B2A65F6A /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		ED429BE7299155E6A112FDC7 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		F95AB1B2E3D4113E92C7ECCC /* PortRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortRowView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		00A081F3EBE32B82534D3AE0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7440079AB976DAC5026DC7DF /* PortScanner.swift */,
+				AECCAA6FC28488DC54B9C1EC /* ProcessTerminator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1F316A56D8A70AAF31A72D59 /* PortKill */ = {
+			isa = PBXGroup;
+			children = (
+				3E74831A13D9C3BBA8277B9E /* Assets.xcassets */,
+				9239B998A6CF2BA56DCE7CD2 /* App */,
+				C73CC9DB1A2D678AA364608F /* DesignSystem */,
+				00A081F3EBE32B82534D3AE0 /* Services */,
+				271036FB8F6B7D84A4C88CDB /* ViewModels */,
+				D16712BCA1A6AC1B6CB8BCDE /* Views */,
+			);
+			path = PortKill;
+			sourceTree = "<group>";
+		};
+		25642D437B8DB31375B9E8AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B794DFEEB6DEE5D279CB890C /* PortEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		271036FB8F6B7D84A4C88CDB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BDA403F2C183C8DC2D82F899 /* PortListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9239B998A6CF2BA56DCE7CD2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1127133B37ADFD290B9C2DE1 /* PortKillApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C73CC9DB1A2D678AA364608F /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				055B75227650B1242EDEF067 /* BrutalistTokens.swift */,
+				25642D437B8DB31375B9E8AA /* Models */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		CC51159769756E8456B35510 = {
+			isa = PBXGroup;
+			children = (
+				1F316A56D8A70AAF31A72D59 /* PortKill */,
+				DCED5E3F1E8B82F8BD44501B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D16712BCA1A6AC1B6CB8BCDE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1EC123EB7C07F06B2A65F6A /* EmptyStateView.swift */,
+				A42ED08A31A37D0E3DF3ED58 /* ErrorBanner.swift */,
+				ED429BE7299155E6A112FDC7 /* FooterView.swift */,
+				4153A5F982E0BC98FF451FAA /* HeaderView.swift */,
+				493104A105FB3B61E3E00063 /* KillConfirmationModal.swift */,
+				2ECEC91147E7550ABEF5DFA2 /* PortListView.swift */,
+				F95AB1B2E3D4113E92C7ECCC /* PortRowView.swift */,
+				51C627E6E3F5CB3F6C22E89B /* TabBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DCED5E3F1E8B82F8BD44501B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C4D1009B78DA12A6533D12A /* PortKill.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B338C1C2EEB818CA8528BDE /* PortKill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E90020954CD60D42FA90C3F /* Build configuration list for PBXNativeTarget "PortKill" */;
+			buildPhases = (
+				C32D41E714141FCFCE6926E3 /* Sources */,
+				B395FA58874CF196F593FF13 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PortKill;
+			packageProductDependencies = (
+			);
+			productName = PortKill;
+			productReference = 9C4D1009B78DA12A6533D12A /* PortKill.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9801B1EB32FC452E07423A5A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0B338C1C2EEB818CA8528BDE = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1DC176E96BC1D40B32A52525 /* Build configuration list for PBXProject "PortKill" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CC51159769756E8456B35510;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DCED5E3F1E8B82F8BD44501B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B338C1C2EEB818CA8528BDE /* PortKill */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B395FA58874CF196F593FF13 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				836F301AA812E82001CC6F10 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C32D41E714141FCFCE6926E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0BC8E009B6900BC475F30C0 /* BrutalistTokens.swift in Sources */,
+				7CF8F8E4A37FA74F53E3A2FC /* EmptyStateView.swift in Sources */,
+				4718179E48B199FE0ACDD1D6 /* ErrorBanner.swift in Sources */,
+				75FB0CAD7C7D4F0CDEFEE21A /* FooterView.swift in Sources */,
+				CBE44F54DEC1738A91E19BB0 /* HeaderView.swift in Sources */,
+				864204296419C465E0842E74 /* KillConfirmationModal.swift in Sources */,
+				82B2E7C51C5F700600D7CAD1 /* PortEntry.swift in Sources */,
+				F5F1D4E735CD972DD6906BD2 /* PortKillApp.swift in Sources */,
+				9F83102E55EB45901B4A8DA9 /* PortListView.swift in Sources */,
+				64FDD5FFF865F69672284809 /* PortListViewModel.swift in Sources */,
+				9FB4287CED29E1D8CC14ED80 /* PortRowView.swift in Sources */,
+				A0C7C7B4BAD6B71E91ECC2A2 /* PortScanner.swift in Sources */,
+				45DF4ED59AF9A743E55B742D /* ProcessTerminator.swift in Sources */,
+				FC20FFF1BC680A6DD6CAC8E0 /* TabBarView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		104091F6DD7C0E1C08AD2513 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PortKill/Resources/PortKill.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PortKill/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.angozero.portkill;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1B315A6E70FC769FBEC49029 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		7BF6DDF16B76824E2E064911 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PortKill/Resources/PortKill.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PortKill/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.angozero.portkill;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AFC61B61CDFDBCF56A0AF880 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DC176E96BC1D40B32A52525 /* Build configuration list for PBXProject "PortKill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B315A6E70FC769FBEC49029 /* Debug */,
+				AFC61B61CDFDBCF56A0AF880 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5E90020954CD60D42FA90C3F /* Build configuration list for PBXNativeTarget "PortKill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104091F6DD7C0E1C08AD2513 /* Debug */,
+				7BF6DDF16B76824E2E064911 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9801B1EB32FC452E07423A5A /* Project object */;
+}
