@@ -1,0 +1,75 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: macos-15
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build and archive
+        run: |
+          xcodebuild archive \
+            -project PortKill.xcodeproj \
+            -scheme PortKill \
+            -configuration Release \
+            -archivePath "$RUNNER_TEMP/PortKill.xcarchive" \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Extract app from archive
+        run: |
+          mkdir -p "$RUNNER_TEMP/export"
+          APP_PATH=$(find "$RUNNER_TEMP/PortKill.xcarchive" -name "PortKill.app" -type d | head -1)
+          cp -R "$APP_PATH" "$RUNNER_TEMP/export/PortKill.app"
+
+      - name: Create DMG
+        run: |
+          hdiutil create \
+            -volname "PortKill" \
+            -srcfolder "$RUNNER_TEMP/export" \
+            -ov \
+            -format UDZO \
+            "$RUNNER_TEMP/PortKill.dmg"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: PortKill ${{ github.ref_name }}
+          body: |
+            ## PortKill ${{ github.ref_name }}
+
+            macOS menu bar utility to monitor TCP listening ports and kill rogue processes.
+
+            ### Download
+
+            - **PortKill.dmg** — macOS 14.0 (Sonoma) or later
+
+            ### Installation
+
+            1. Mount the DMG and drag PortKill.app to your Applications folder
+            2. Right-click → Open on first launch to bypass Gatekeeper (unsigned build)
+            3. PortKill appears in your menu bar — no Dock icon
+
+            ### Requirements
+
+            - macOS 14.0+
+            - Apple Silicon or Intel (universal binary not yet provided — this build targets the runner architecture)
+          files: ${{ runner.temp }}/PortKill.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
